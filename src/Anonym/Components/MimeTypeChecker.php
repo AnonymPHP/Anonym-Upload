@@ -19,11 +19,30 @@
          */
         protected $allowedTypes = [];
 
-        public function __construct($allowedTypes = [])
+        /**
+         * Mime tipi ni tutar
+         *
+         * @var
+         */
+        protected $type;
+
+        public function __construct($allowedTypes = [], $type = '')
         {
             $this->setAllowedMimeTypes($allowedTypes);
+            $this->setFileMimeType($type);
         }
 
+        /**
+         * tipin atamasını yapar
+         *
+         * @param string $type
+         * @return $this
+         */
+        public function setFileMimeType($type = '')
+        {
+            $this->type = $type;
+            return $this;
+        }
         /**
          * Kabul edilen dosya tiplerini döndürür
          *
@@ -67,13 +86,9 @@
          * @param string $filePath
          * @return mixed
          */
-        public function getFileMimeType($filePath = '')
+        public function getFileMimeType()
         {
-            $finfo = finfo_open(FILEINFO_MIME_TYPE);
-            $type =  finfo_file($finfo, $filePath);
-            finfo_close($finfo);
-
-            return $type;
+            return $this->type;
         }
 
         /**
@@ -91,7 +106,7 @@
             }
 
             // dosyanın tipini alıyoruz
-            $fileMimeType = $this->getFileMimeType($file);
+            $fileMimeType = $this->getFileMimeType();
             foreach($types as $type)
             {
                  if($type === $fileMimeType){
