@@ -9,7 +9,6 @@
 
     namespace Anonym\Components\Upload\Multiple;
 
-
     use Anonym\Components\Upload\ImageUpload;
 
     class MultipileImageUpload extends MultipileUpload
@@ -39,6 +38,12 @@
             'gif'
         ];
 
+        /**
+         * Sınıfı başlatır ve üst sınıfı başlatır
+         *
+         * @param array $files
+         * @param string $target
+         */
         public function __construct(array $files = [], $target = ''){
             parent::__construct($files, $target);
 
