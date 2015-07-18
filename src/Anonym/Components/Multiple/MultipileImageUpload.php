@@ -11,6 +11,10 @@
 
     use Anonym\Components\Upload\ImageUpload;
 
+    /**
+     * Class MultipileImageUpload
+     * @package Anonym\Components\Upload\Multiple
+     */
     class MultipileImageUpload extends MultipileUpload
     {
 
