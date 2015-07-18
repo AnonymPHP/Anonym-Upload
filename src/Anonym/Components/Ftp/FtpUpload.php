@@ -16,7 +16,34 @@
      */
     class FtpUpload extends Upload
     {
+
+        /**
+         * Bağlantı objesi tutulur
+         *
+         * @var FtpConnection
+         */
+        protected $connection;
+
+        /**
+         * Sınıfı başlatır ve ftp ile bağlantı kurar
+         *
+         * @param array $connection
+         * @param array $file
+         * @param string $target
+         */
         public function __construct(array $connection = [], $file = [], $target = 'upload'){
             parent::__construct($file, $target);
+            $this->connection = new FtpConnection($connection);
         }
+
+        /**
+         * Dosyanın yüklemesini gerçekleştirir
+         *
+         * @return bool
+         */
+        public function upload(){
+            return $this->uploadFtp($this->connection);
+        }
+
+
     }

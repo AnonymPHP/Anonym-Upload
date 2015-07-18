@@ -112,10 +112,10 @@
          * Dosyayı yükler
          *
          * @param string $targetFull
-         * @param string $srcFull
+         * @param array $srcFull
          * @return bool
          */
-        public function upload($targetFull = '', $srcFull = ''){
+        public function upload($targetFull = '', $srcFull = []){
             return ftp_put($this->getConnect(), $targetFull, $srcFull, FTP_BINARY);
         }
         /**
