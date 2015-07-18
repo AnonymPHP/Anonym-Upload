@@ -45,6 +45,4 @@
         public function upload(){
             return $this->uploadFtp($this->connection);
         }
-
-
     }
