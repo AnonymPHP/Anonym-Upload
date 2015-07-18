@@ -10,7 +10,7 @@
     namespace Anonym\Components\Upload;
 
     
-    class MimeTypeChecker
+    class MimeTypeChecker implements CheckerInterface
     {
         /**
          * Yüklenmesine izin verilecek tipler tutulur.
