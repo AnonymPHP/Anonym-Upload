@@ -11,10 +11,10 @@
     use Exception;
 
     /**
-     * Class FileTypeException
+     * Class TargetIsNotWriteableException
      * @package Anonym\Components\Upload
      */
-    class FileTypeException extends  Exception
+    class TargetIsNotWriteableException extends  Exception
     {
         /**
          *

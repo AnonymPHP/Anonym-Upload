@@ -100,7 +100,6 @@
         public function check($file = '')
         {
             $types = $this->getAllowedMimeTypes();
-
             if ($types === '*') {
                 return true;
             }

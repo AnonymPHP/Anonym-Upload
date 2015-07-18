@@ -19,6 +19,12 @@
          */
          private $allowedExtensions;
 
+        /**
+         * Dosyanın uzantısını tutar
+         *
+         * @var
+         */
+        private $ext;
          /**
           * [$notAllowedExtensions description]
           * @var array|string
@@ -26,9 +32,10 @@
          private $notAllowedExtensions;
 
 
-        public function __construct($allowed = '*', $notAllowed = [])
+        public function __construct($allowed = '*', $notAllowed = [], $ext = '')
         {
             $this->setAllowedExt($allowed);
+            $this->ext = $ext;
             $this->setNotAllowedExt($notAllowed);
 
         }
@@ -84,15 +91,18 @@
          */
         public function check($file = ''){
 
+
             if (strstr($file, '/')) {
                 $file = end(explode('/',$file));
             }
 
-            $ext = (strstr($file, ".")) ? end(explode('.', $file)) : '';
+            $ext = $this->ext;
 
             if($this->checkAllowedTypes($ext) && $this->checkNotAllowedTypes($file))
             {
-
+                return true;
+            }else{
+                return false;
             }
         }
 

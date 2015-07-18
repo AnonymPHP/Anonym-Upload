@@ -8,20 +8,19 @@
      */
 
     namespace Anonym\Components\Upload;
+
     use Exception;
 
-    /**
-     * Class FileTypeException
-     * @package Anonym\Components\Upload
-     */
-    class FileTypeException extends  Exception
+    class TargetIsNotReadableException extends Exception
     {
         /**
          *
          *
          * @param string $message gönderilecek mesaj
          */
-        public function __construct($message = ''){
+        public function __construct($message = '')
+        {
             $this->message = $message;
         }
+
     }

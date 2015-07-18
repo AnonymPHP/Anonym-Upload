@@ -24,13 +24,19 @@
         private $securityKey;
 
         /**
+         *
+         * @var string
+         */
+        private $ext;
+        /**
          * Yeni dosya isminin oluşturulabilmesi için güvenlik kodunu oluşturur
          */
-        public function __construct()
+        public function __construct($ext = '')
         {
             $remote = $_SERVER['REMOTE_ADDR'];
             $server = $_SERVER['SERVER_ADDR'];
-            $this->securityKey(md5($remote.$server));
+            $this->securityKey = md5($remote.$server);
+            $this->ext= $ext;
         }
 
         /**
@@ -40,8 +46,6 @@
          */
         public function __toString()
         {
-            $key = substr($this->securityKey, rand(0,15), rand(15, 25));
-            $name = $key.' generated';
-            return $name;
+            return substr($this->securityKey, rand(0,15), rand(15, 25));
         }
     }
