@@ -8,9 +8,15 @@
      */
 
     namespace Anonym\Components\Upload\Ftp;
+    use Anonym\Components\Upload\Upload;
 
-
-    class FtpUpload
+    /**
+     * Class FtpUpload
+     * @package Anonym\Components\Upload\Ftp
+     */
+    class FtpUpload extends Upload
     {
-
+        public function __construct(array $connection = [], $file = [], $target = 'upload'){
+            parent::__construct($file, $target);
+        }
     }

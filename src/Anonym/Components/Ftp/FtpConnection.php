@@ -14,7 +14,7 @@
      * @package Anonym\Components\Upload\Ftp
      */
 
-    class FtpConnection
+    class FtpConnection implements FtpConnectionInterface
     {
         /**
          * @return bool|resource
