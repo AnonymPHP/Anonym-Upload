@@ -34,6 +34,7 @@
         public function __construct(array $connection = [], $file = [], $target = 'upload'){
             parent::__construct($file, $target);
             $this->connection = new FtpConnection($connection);
+            $this->connection->connect();
         }
 
         /**
