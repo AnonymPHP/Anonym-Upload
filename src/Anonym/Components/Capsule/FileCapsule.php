@@ -285,5 +285,4 @@
             $this->setTarget($capsule['target']);
 
         }
-
     }
