@@ -7,15 +7,14 @@
      *
      */
 
-    namespace Anonym\Components\Upload;
-    use Anonym\Components\Upload\Capsule\ImageCapsule;
-    /**
-     * Class ImageUpload
-     * @package Anonym\Components\Upload
-     */
+    namespace Anonym\Components\Upload\Multiple;
 
-    class ImageUpload extends Upload
+
+    use Anonym\Components\Upload\ImageUpload;
+
+    class MultipileImageUpload extends MultipileUpload
     {
+
         /**
          * Resim yüklerken izin verilecek tipler
          *
@@ -40,17 +39,34 @@
             'gif'
         ];
 
-        /**
-         * Sınıfı başlatır ve resim yüklenebilmesi için gerekli ortamı hazırlar
-         *
-         * @param array $file
-         * @param string $target
-         */
-        public function __construct(array $file = [], $target = ''){
+        public function __construct(array $files = [], $target = ''){
+            parent::__construct($files, $target);
 
-            parent::__construct($file, $target);
-            $this->setAllowedMimeTypes($this->getImageMimeTypes());
-            $this->setAllowedExt($this->getImageTypeExt(), ['.php']);
+        }
+
+        /**
+         * Dosyaları yükler
+         *
+         * @return array
+         */
+        public function upload()
+        {
+            $files = $this->getFiles();
+            $response = [];
+
+            foreach($files as $file){
+
+                if(!$file instanceof ImageUpload)
+                {
+                    $file = new ImageUpload($file);
+                    $file->setAllowedMimeTypes($this->getImageMimeTypes());
+                    $file->setAllowedExt($this->getImageTypeExt(), ['.php']);
+                }
+
+                $response[] = $file->upload();
+            }
+
+            return $response;
         }
 
         /**
@@ -89,25 +105,4 @@
             return $this->imageTypeExt;
         }
 
-        /**
-         *  @return ImageCapsule|bool
-         */
-        public function upload()
-        {
-            $upload = parent::upload();
-
-            if($upload){
-                $upload = [
-                    'filepath' => $upload,
-                    'name' => $this->getNewName(),
-                    'target' => $this->getTarget(),
-                    'ext' => $this->getExt(),
-                    'size' => $this->getFile()['size'],
-                ];
-                return new ImageCapsule($upload);
-            }else{
-                return false;
-            }
-
-        }
     }
