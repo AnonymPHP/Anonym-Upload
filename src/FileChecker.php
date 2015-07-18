@@ -21,7 +21,7 @@
 
          /**
           * [$notAllowedExtensions description]
-          * @var array
+          * @var array|string
           */
          private $notAllowedExtensions;
 
@@ -57,6 +57,25 @@
         }
 
         /**
+         * Kullanılmasına izin verilen tipler
+         *
+         * @return array|string
+         */
+        public function getAllowedExt()
+        {
+            return $this->allowedExtensions;
+        }
+
+        /**
+         * Kullanılmasına izin verilmeyen tipler, isimler
+         *
+         * @return array|string
+         */
+        public function getNotAllowedExt()
+        {
+            return $this->notAllowedExtensions;
+        }
+        /**
          *
          *  Kontrolu yapar ve sonucu döndürür
          *
@@ -65,5 +84,79 @@
          */
         public function check($file = ''){
 
+            if (strstr($file, '/')) {
+                $file = end(explode('/',$file));
+            }
+
+            $ext = (strstr($file, ".")) ? end(explode('.', $file)) : '';
+
+            if($this->checkAllowedTypes($ext) && $this->checkNotAllowedTypes($file))
+            {
+
+            }
+        }
+
+        /**
+         * Kullanılmasına izin verilen tipleri denetler
+         *
+         * @param string $ext
+         * @return bool
+         */
+        private function checkAllowedTypes($ext = ''){
+
+            $allowedTypes = $this->getAllowedExt();
+
+            if ('*' === $allowedTypes) {
+                return true;
+            }else{
+
+              if(is_string($allowedTypes))
+              {
+                  $allowedTypes = (array) $allowedTypes;
+              }
+
+                foreach($allowedTypes as $type)
+                {
+
+                    if($type === $ext)
+                    {
+                      return true;
+                    }else{
+                        continue;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /**
+         * Kullanılması desteklenmeyen tipler
+         *
+         * @param string $file
+         * @return bool
+         */
+        private function checkNotAllowedTypes($file = '')
+        {
+            $notAllowedTypes = $this->getNotAllowedExt();
+
+            if ('*' === $notAllowedTypes) {
+                return true;
+            }
+
+            if(is_string($notAllowedTypes))
+            {
+                $notAllowedTypes = (array) $notAllowedTypes;
+            }
+
+            foreach($notAllowedTypes as $type){
+                $type = '.'.$type;
+                if(strstr($file, $type)){
+                    return false;
+                }else{
+                    continue;
+                }
+            }
+
+            return true;
         }
     }
