@@ -29,6 +29,22 @@
         ];
 
         /**
+         * @return array
+         */
+        public function getİmageTypeExt()
+        {
+            return $this->imageTypeExt;
+        }
+
+        /**
+         * @param array $imageTypeExt
+         */
+        public function setİmageTypeExt($imageTypeExt)
+        {
+            $this->imageTypeExt = $imageTypeExt;
+        }
+
+        /**
          * İzin verilen uzantıları tutar
          *
          * @var array
