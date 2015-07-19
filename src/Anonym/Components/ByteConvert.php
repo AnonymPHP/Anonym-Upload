@@ -70,10 +70,8 @@
         {
             $type = $this->getType();
             $size = $this->getSize();
-
             $selectedType = $this->sizeTypes[$type];
-
-            return ($type * $size);
+            return ($selectedType * $size);
         }
 
         /**
