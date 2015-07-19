@@ -20,6 +20,12 @@
     class FileUpload extends Upload
     {
 
+        /**
+         * Sınıfı başlatır ve üst sınıfı başlatır
+         *
+         * @param array $file
+         * @param string $target
+         */
         public function __construct(array $file = [], $target = 'upload')
         {
             parent::__construct($file, $target);
