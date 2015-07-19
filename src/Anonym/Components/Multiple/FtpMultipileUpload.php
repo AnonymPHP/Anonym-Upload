@@ -73,5 +73,4 @@
         {
             $this->connection = $connection;
         }
-
     }
