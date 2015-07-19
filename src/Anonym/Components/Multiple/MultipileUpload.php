@@ -11,6 +11,10 @@
 
     use Anonym\Components\Upload\Upload;
 
+    /**
+     * Class MultipileUpload
+     * @package Anonym\Components\Upload\Multiple
+     */
     class MultipileUpload
     {
 
@@ -64,6 +68,27 @@
             return $this->files;
         }
 
+
+        /**
+         * İçeriği yeniden yorumlayarak uygun bir hale getirir
+         *
+         * @param $post
+         * @return array
+         */
+        private function reArrayFiles(&$post) {
+
+            $fileArray = [];
+            $fileCount = count($post['name']);
+            $fileKeys = array_keys($post);
+
+            for ($i=0; $i<$fileCount; $i++) {
+                foreach ($fileKeys as $key) {
+                    $file_ary[$i][$key] = $post[$key][$i];
+                }
+            }
+
+            return $fileArray;
+        }
         /**
          * Dosyaların atamasını yapar
          *
@@ -72,7 +97,8 @@
          */
         public function setFiles($files)
         {
-            $this->files = $files;
+
+            $this->files = $this->reArrayFiles($files);
             return $this;
         }
 
