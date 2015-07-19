@@ -9,7 +9,7 @@
 
     namespace Anonym\Components\Upload\Multiple;
 
-    use Anonym\Components\Upload\Upload;
+    use Anonym\Components\Upload\FileUpload;
 
     /**
      * Class MultipileUpload
@@ -51,7 +51,7 @@
 
                 if(!$file instanceof Upload)
                 {
-                    $file = new Upload($file);
+                    $file = new FileUpload($file);
                 }
 
                 $response[] = $file->upload();

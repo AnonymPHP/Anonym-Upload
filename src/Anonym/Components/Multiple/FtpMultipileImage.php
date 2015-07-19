@@ -15,7 +15,7 @@
      * Class FtpMutlipileImage
      * @package Anonym\Components\Upload\Multiple
      */
-    class FtpMutlipileImage extends MultipileUpload
+    class FtpMultipileImage extends MultipileUpload
     {
 
         private $connection;
