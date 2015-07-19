@@ -102,6 +102,8 @@
         }
 
         /**
+         * Yükleme işlemini gerçekleştirir
+         *
          *  @return ImageCapsule|bool
          */
         public function upload()

@@ -12,6 +12,11 @@
 
     use Anonym\Components\Upload\Capsule\FileCapsule;
 
+    /**
+     * Class FileUpload
+     * @package Anonym\Components\Upload
+     */
+
     class FileUpload extends Upload
     {
 
