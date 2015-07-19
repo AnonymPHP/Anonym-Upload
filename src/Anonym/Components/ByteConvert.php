@@ -59,8 +59,6 @@
             $this->findType();
         }
 
-
-
         /**
          * Girilen string değerini byte a çevirir
          *
@@ -164,5 +162,4 @@
 
             return $this;
         }
-
     }
