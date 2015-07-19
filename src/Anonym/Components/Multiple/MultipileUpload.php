@@ -83,7 +83,7 @@
 
             for ($i=0; $i<$fileCount; $i++) {
                 foreach ($fileKeys as $key) {
-                    $file_ary[$i][$key] = $post[$key][$i];
+                    $fileArray[$i][$key] = $post[$key][$i];
                 }
             }
 
