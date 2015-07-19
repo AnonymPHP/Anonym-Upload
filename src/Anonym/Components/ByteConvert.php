@@ -68,7 +68,12 @@
          */
         public function convertToByte()
         {
+            $type = $this->getType();
+            $size = $this->getSize();
 
+            $selectedType = $this->sizeTypes[$type];
+
+            return ($type * $size);
         }
 
         /**
@@ -103,6 +108,11 @@
             $this->type = $type;
         }
 
+        /**
+         * Dosyanın tipini bulur ve boyutunu ayarlar
+         *
+         * @throws ByteConvertException
+         */
         private function findType()
         {
             $string = $this->getByteString();
@@ -112,6 +122,7 @@
             $size = (int) substr($string, 0, strlen($string) - 2);
             if(isset($this->sizeTypes[$type])){
                 $this->setSize($size);
+                $this->setType($type);
             }else{
                 throw new ByteConvertException(sprintf('%s adında bir dönüştürme tipi bulunamadı', $type));
             }
