@@ -8,14 +8,15 @@
      */
 
     namespace Anonym\Components\Upload;
-    use Anonym\Components\Upload\Capsule\ImageCapsule;
+
+
     /**
-     * Class ImageUpload
+     * Class ImageUploadTypes
      * @package Anonym\Components\Upload
      */
-
-    class ImageUpload extends Upload
+    class ImageUploadTypes
     {
+
         /**
          * Resim yüklerken izin verilecek tipler
          *
@@ -40,30 +41,6 @@
             'gif'
         ];
 
-        /**
-         * Sınıfı başlatır ve resim yüklenebilmesi için gerekli ortamı hazırlar
-         *
-         * @param array $file
-         * @param string $target
-         */
-        public function __construct(array $file = [], $target = ''){
-
-            parent::__construct($file, $target);
-
-            $types = $this->getDefaultImageTypes();
-            $this->setAllowedMimeTypes($types->getImageMimeTypes());
-            $this->setAllowedExt($types->getImageTypeExt(), ['.php']);
-        }
-
-        /**
-         * Default kullanılacak tipleri döndürür
-         *
-         * @return ImageUploadTypes
-         */
-        public function getDefaultImageTypes()
-        {
-            return new ImageUploadTypes();
-        }
 
         /**
          * @return array
@@ -101,25 +78,4 @@
             return $this->imageTypeExt;
         }
 
-        /**
-         *  @return ImageCapsule|bool
-         */
-        public function upload()
-        {
-            $upload = parent::upload();
-
-            if($upload){
-                $upload = [
-                    'filepath' => $upload,
-                    'name' => $this->getNewName(),
-                    'target' => $this->getTarget(),
-                    'ext' => $this->getExt(),
-                    'size' => $this->getFile()['size'],
-                ];
-                return new ImageCapsule($upload);
-            }else{
-                return false;
-            }
-
-        }
     }

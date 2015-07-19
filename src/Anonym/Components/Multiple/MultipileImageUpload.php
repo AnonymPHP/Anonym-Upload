@@ -10,6 +10,7 @@
     namespace Anonym\Components\Upload\Multiple;
 
     use Anonym\Components\Upload\ImageUpload;
+    use Anonym\Components\Upload\ImageUploadTypes;
 
     /**
      * Class MultipileImageUpload
@@ -18,29 +19,6 @@
     class MultipileImageUpload extends MultipileUpload
     {
 
-        /**
-         * Resim yüklerken izin verilecek tipler
-         *
-         * @var array
-         */
-        private $imageMimeTypes = [
-            'image/png',
-            'image/gif',
-            'image/jpeg',
-            'image/pjpeg'
-        ];
-
-
-        /**
-         * İzin verilen uzantıları tutar
-         *
-         * @var array
-         */
-        private $imageTypeExt = [
-            'png',
-            'jpg',
-            'gif'
-        ];
 
         /**
          * Sınıfı başlatır ve üst sınıfı başlatır
@@ -62,14 +40,14 @@
         {
             $files = $this->getFiles();
             $response = [];
-
+            $types = new ImageUploadTypes();
             foreach($files as $file){
 
                 if(!$file instanceof ImageUpload)
                 {
                     $file = new ImageUpload($file);
-                    $file->setAllowedMimeTypes($this->getImageMimeTypes());
-                    $file->setAllowedExt($this->getImageTypeExt(), ['.php']);
+                    $file->setAllowedMimeTypes($types->getImageMimeTypes());
+                    $file->setAllowedExt($types->getImageTypeExt(), ['.php']);
                 }
 
                 $response[] = $file->upload();
@@ -78,40 +56,5 @@
             return $response;
         }
 
-        /**
-         * @return array
-         */
-        public function getImageTypeExt()
-        {
-            return $this->imageTypeExt;
-        }
-
-        /**
-         * @param array $imageTypeExt
-         */
-        public function setImageTypeExt($imageTypeExt)
-        {
-            $this->imageTypeExt = $imageTypeExt;
-        }
-
-
-        /**
-         * İzin verilen mime tiplerini döndürür
-         *
-         * @return array
-         */
-        public function getImageMimeTypes()
-        {
-            return $this->imageMimeTypes;
-        }
-
-        /**
-         * İzin verilen uzantıları döndürür
-         *
-         * @return array
-         */
-        public function getImageAllowedExt(){
-            return $this->imageTypeExt;
-        }
 
     }
