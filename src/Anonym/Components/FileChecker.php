@@ -161,7 +161,6 @@
             }
 
             foreach($notAllowedTypes as $type){
-                $type = '.'.$type;
                 if(strstr($file, $type)){
                     return false;
                 }else{
