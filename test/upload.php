@@ -5,3 +5,4 @@
     $upload = new ImageUpload($_FILES['file'], 'upload');
     $upload->upload();
 
+
