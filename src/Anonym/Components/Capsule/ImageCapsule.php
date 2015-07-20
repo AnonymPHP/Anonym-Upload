@@ -199,6 +199,9 @@
                 case 'png':
                     return imagecreatefrompng($path);
                 break;
+                case 'gif':
+                     return imagecreatefromgif($path);
+                    break;
 
                 default:
                     return imagecreatefrompng($path);
@@ -221,6 +224,28 @@
             );
             $image = $this->createImageFrom($this->getFilePath());
             imagejpeg($image, $target, 100);
+            imagedestroy($image);
+            $this->setCovertVars([
+                'ext' => $fileType,
+                'filepath' => $target
+            ]);
+            return $this;
+        }
+        /**
+         * Resmi gif formatına dönüşütürür
+         *
+         * @return ImageCapsule
+         */
+        public function convertToGif(){
+            $fileType = 'jpg';
+            $target = sprintf(
+                '%s/%s.%s',
+                $this->getTarget(),
+                $this->getName(),
+                $fileType
+            );
+            $image = $this->createImageFrom($this->getFilePath());
+            imagegif($image, $target, 100);
             imagedestroy($image);
             $this->setCovertVars([
                 'ext' => $fileType,
