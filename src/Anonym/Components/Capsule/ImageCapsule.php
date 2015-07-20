@@ -35,6 +35,7 @@
          */
         public function reSize($width = 0, $height = 0)
         {
+            $this->gdExtensionCheck();
             $dosya = $this->getFilePath();
             list($genislik, $yukseklik) = getimagesize($dosya);
 
@@ -128,6 +129,8 @@
          */
         public function rotate($x = 90)
         {
+            $this->gdExtensionCheck();
+
             $file = $this->getFilePath();
             switch ($this->getExt()) {
                 case 'png':
@@ -192,6 +195,7 @@
          */
         private function createImageFrom($path){
 
+            $this->gdExtensionCheck();
             switch($this->getExt()){
                 case 'jpg':
                      return imagecreatefromjpeg($path);
