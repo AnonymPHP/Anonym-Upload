@@ -23,6 +23,7 @@
          */
         private $securityKey;
 
+
         /**
          *
          * @var string
@@ -48,4 +49,43 @@
         {
             return substr($this->securityKey, rand(0,15), rand(15, 25));
         }
+
+        /**
+         * @return string
+         */
+        public function getSecurityKey()
+        {
+            return $this->securityKey;
+        }
+
+        /**
+         * @param string $securityKey
+         * @return NewNameGenerator
+         */
+        public function setSecurityKey($securityKey)
+        {
+            $this->securityKey = $securityKey;
+
+            return $this;
+        }
+
+        /**
+         * @return string
+         */
+        public function getExt()
+        {
+            return $this->ext;
+        }
+
+        /**
+         * @param string $ext
+         * @return NewNameGenerator
+         */
+        public function setExt($ext)
+        {
+            $this->ext = $ext;
+
+            return $this;
+        }
     }
+

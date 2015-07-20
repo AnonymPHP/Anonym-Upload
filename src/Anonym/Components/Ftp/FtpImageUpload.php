@@ -87,5 +87,4 @@
         {
             $this->imageMimeTypes = $imageMimeTypes;
         }
-
     }

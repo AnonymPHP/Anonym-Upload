@@ -9,6 +9,7 @@
 
     namespace Anonym\Components\Upload\Multiple;
 
+    use Anonym\Components\Upload\Upload;
     use Anonym\Components\Upload\FileUpload;
 
     /**

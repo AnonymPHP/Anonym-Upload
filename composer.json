@@ -4,19 +4,20 @@
   "description": "AnonymFramework, New Professional PHP Framework Upload Library",
   "license": "MIT",
   "repository": {
-	"type": "git",
-	"url": "git://github.com/AnonymPHP/Anonym-Upload.git"
+    "type": "git",
+    "url": "git://github.com/AnonymPHP/Anonym-Upload.git"
   },
   "authors": [
-	{
-	  "name": "Vahit Şerif Sağlam",
-	  "email": "vahit.serif119@gmail.com",
-	  "homepage": "http://www.gemframework.com"
-	}
+    {
+      "name": "Vahit Şerif Sağlam",
+      "email": "vahit.serif119@gmail.com",
+      "homepage": "http://www.gemframework.com"
+    }
   ],
   "autoload": {
-	"psr-4": {
-	  "Anonym\\Components\\Upload\\": "src/Anonym/Components/"
-	}
+    "psr-4": {
+      "Anonym\\Components\\Upload\\": "src/Anonym/Components/"
+    }
   }
 }
+

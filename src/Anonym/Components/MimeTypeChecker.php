@@ -8,8 +8,8 @@
      */
 
     namespace Anonym\Components\Upload;
+    use Anonym\Components\Upload\CheckerInterface;
 
-    
     class MimeTypeChecker implements CheckerInterface
     {
         /**

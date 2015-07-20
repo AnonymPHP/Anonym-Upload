@@ -9,7 +9,7 @@
 
     namespace Anonym\Components\Upload;
 
-
+    use Anonym\Components\Upload\Upload;
     use Anonym\Components\Upload\Capsule\FileCapsule;
 
     /**

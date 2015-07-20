@@ -9,7 +9,7 @@
 
 
     namespace Anonym\Components\Upload;
-
+    use Anonym\Components\Upload\CheckerInterface;
     /**
      * Class FileChecker
      * @package Anonym\Components\Upload
