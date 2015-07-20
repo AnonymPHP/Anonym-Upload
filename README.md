@@ -354,7 +354,7 @@ yüklenen dosyanız .jpg formatında değilse dosyanızı .png formatına dönü
 GİF FORMATINA DÖNÜŞÜM
 --------------------------------
 
-yüklenen dosyanız .gif formatında değilse dosyanızı .png formatına dönüştürebilirsiniz.
+yüklenen dosyanız .gif formatında değilse dosyanızı .gif formatına dönüştürebilirsiniz.
 
 ```php
     $upload->convertToGif();
