@@ -51,7 +51,7 @@
         public function __construct(array $file, $newName = '', $target = '', $ext = '')
         {
             if(!file_exists($target)){
-                mkdir($target);
+                mkdir($target, 0777);
             }
 
             chmod($target, 0777);
