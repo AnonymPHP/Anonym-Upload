@@ -16,7 +16,6 @@
      */
     class FileChecker implements CheckerInterface
     {
-
         /**
          * [$allowedExtensions description]
          * @var array|string
