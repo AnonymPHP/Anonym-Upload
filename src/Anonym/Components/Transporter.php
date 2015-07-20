@@ -52,9 +52,9 @@
         {
             if(!file_exists($target)){
                 mkdir($target);
-                chmod($target, 0777);
             }
 
+            chmod($target, 0777);
             if(!is_writeable($target)){
                 throw new TargetIsNotWriteableException(sprintf('%s hedefiniz yazdırılabilir bir dosya değil', $target));
             }
