@@ -73,6 +73,13 @@
 
             $target = ($this->target === "") ? "":$this->target."/";
             $targetFileName = sprintf('%s%s.%s', $target, $this->newName, $this->ext);
+
+            // eğer dosya varsa siler
+            if(file_exists($targetFileName)){
+                unlink($targetFileName);
+            }
+
+
             if(move_uploaded_file($this->file['tmp_name'], $targetFileName)){
                 chmod($targetFileName, 0777);
                 return $targetFileName;
