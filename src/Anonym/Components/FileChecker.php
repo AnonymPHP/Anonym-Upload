@@ -10,6 +10,10 @@
 
     namespace Anonym\Components\Upload;
 
+    /**
+     * Class FileChecker
+     * @package Anonym\Components\Upload
+     */
     class FileChecker implements CheckerInterface
     {
 
