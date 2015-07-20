@@ -6,7 +6,35 @@
 ---------------------------------------------
 AnonymPHP Uploader ile resim ve normal dosyalarınızı tekil ve çoğul olarak basit bir şekilde yapabilirsiniz.
 
-[TOC]
+- [AnonymUploader](#)
+- [Kurulum](#)
+	- [Composer.json dosyası düzenlenmesi](#)
+	- [Composer çalıştırılması](#)
+	- [Autoload olayının aktif edilmesi](#)
+- [Yükleme İşlemleri](#)
+	- [Tekil Dosya Yükleme](#)
+	- [Tekil Resim Yükleme](#)
+	- [Ftp'e Tekil Dosya Yükleme](#)
+	- [Ftp'e Tekil Resim Yükleme](#)
+	- [Çoğul Dosya Yükleme](#)
+	- [Çoğul Resim Yükleme](#)
+	- [Ftp 'e Çoğul dosya yüklemek](#)
+	- [Ftp 'e Çoğul Resim yüklemek](#)
+- [YARDIMCI FONKSİYONLAR](#)
+	- [Uzantı Kontrolu ](#)
+	- [Mime Tip Kontrolu ](#)
+	- [Dosya Boyutu Kontrolu](#)
+	- [Dosya İsmini Düzenleme](#)
+- [YÜKLEMEDEN SONRAKİ İŞLEMLER](#)
+	- [Dosya Bilgilerini Alma](#)
+	- [Dosyalarla basit işlemler yapmak](#)
+- [Resimlerle Gelişmiş İşlemler Yapmak](#)
+	- [PNG FORMATINA DÖNÜŞÜM](#)
+	- [JPG FORMATINA DÖNÜŞÜM](#)
+	- [GİF FORMATINA DÖNÜŞÜM](#)
+	- [Resmi Sıkıştırma](#)
+	- [Resmi Döndürme](#)
+	- [Resmi Yeniden Boyutlandırma](#)
 
 Sunucunuzun max post ve gd gibi kütüphanelerini ayarlamanız önerilir.
 
