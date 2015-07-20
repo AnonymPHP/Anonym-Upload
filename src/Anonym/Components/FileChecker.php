@@ -7,7 +7,6 @@
      *
      */
 
-
     namespace Anonym\Components\Upload;
     use Anonym\Components\Upload\CheckerInterface;
     /**
