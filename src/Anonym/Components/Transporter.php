@@ -71,7 +71,8 @@
          */
         public function transport(){
 
-            $targetFileName = sprintf('%s/%s.%s', $this->target, $this->newName, $this->ext);
+            $target = ($this->target === "") ? "":$this->target."/";
+            $targetFileName = sprintf('%s%s.%s', $target, $this->newName, $this->ext);
             if(move_uploaded_file($this->file['tmp_name'], $targetFileName)){
                 chmod($targetFileName, 0777);
                 return $targetFileName;
