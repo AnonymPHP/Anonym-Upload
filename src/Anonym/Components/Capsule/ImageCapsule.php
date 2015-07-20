@@ -170,6 +170,90 @@
             }
         }
 
+
+        /**
+         * Dönüştürmekten sonraki değerleri ayarlar
+         *
+         * @param array $vars
+         */
+        private function setCovertVars(array $vars = []){
+            $this->setExt($vars['ext']);
+            $this->capsule['ext'] = $vars['ext'];
+            $this->setFilePath($vars['filepath']);
+            $this->capsule['filepath'] = $vars['filepath'];
+        }
+
+
+        /**
+         * Resmi oluşturur
+         *
+         * @param $path
+         * @return resource
+         */
+        private function createImageFrom($path){
+
+            switch($this->getExt()){
+                case 'jpg':
+                     return imagecreatefromjpeg($path);
+                    break;
+                case 'png':
+                    return imagecreatefrompng($path);
+                break;
+
+                default:
+                    return imagecreatefrompng($path);
+                break;
+            }
+
+        }
+        /**
+         * Resmi png formatına dönüşütürür
+         *
+         * @return ImageCapsule
+         */
+        public function convertToPng(){
+            $fileType = 'jpg';
+            $target = sprintf(
+                '%s/%s.%s',
+                $this->getTarget(),
+                $this->getName(),
+                $fileType
+            );
+            $image = $this->createImageFrom($this->getFilePath());
+            imagejpeg($image, $target, 100);
+            imagedestroy($image);
+            $this->setCovertVars([
+                'ext' => $fileType,
+                'filepath' => $target
+            ]);
+            return $this;
+        }
+
+        /**
+         * Resmi jpeg formatına dönüştürür
+         *
+         * @return ImageCapsule
+         */
+        public function convertToJpeg()
+        {
+
+            $fileType = 'png';
+            $target = sprintf(
+                '%s/%s.%s',
+                $this->getTarget(),
+                $this->getName(),
+                $fileType
+            );
+            $image = $this->createImageFrom($this->getFilePath());
+            imagepng($image, $target, 10);
+            imagedestroy($image);
+            $this->setCovertVars([
+                'ext' => $fileType,
+                'filepath' => $target
+            ]);
+            return $this;
+        }
+
         /**
          * Dosyanın yolunu yazar
          *

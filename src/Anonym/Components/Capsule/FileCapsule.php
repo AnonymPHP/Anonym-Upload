@@ -22,7 +22,7 @@
          * @var array
          */
 
-        private $capsule;
+        protected $capsule;
 
         /**
          * Dosyanın yolunu tutar
@@ -178,6 +178,7 @@
             rename($this->getFilePath(), $dest);
             $this->setFilePath($dest);
 
+            $this->capsule['filepath'] = $dest;
             return $this;
         }
 

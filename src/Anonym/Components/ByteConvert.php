@@ -26,10 +26,7 @@
          * @var array
          */
         private $sizeTypes = [
-            'KB' => 1024,
-            'MB' => 1024 * 1024,
-            'GB' => 1024 * 1024 * 1024,
-            'TB' => 1024 * 1024 * 1024 * 1024
+
         ];
 
 
@@ -55,6 +52,7 @@
          */
         public function __construct($string = '')
         {
+            $this->setDefaultValues();
             $this->setByteString($string);
             $this->findType();
         }
@@ -69,6 +67,7 @@
             $type = $this->getType();
             $size = $this->getSize();
             $selectedType = $this->sizeTypes[$type];
+
             return ($selectedType * $size);
         }
 
@@ -115,11 +114,11 @@
             $type = substr($string, -2);
             $type = mb_convert_case($type, MB_CASE_UPPER);
 
-            $size = (int) substr($string, 0, strlen($string) - 2);
-            if(isset($this->sizeTypes[$type])){
+            $size = (int)substr($string, 0, strlen($string) - 2);
+            if (isset($this->sizeTypes[$type])) {
                 $this->setSize($size);
                 $this->setType($type);
-            }else{
+            } else {
                 throw new ByteConvertException(sprintf('%s adında bir dönüştürme tipi bulunamadı', $type));
             }
         }
@@ -161,5 +160,17 @@
             $this->size = $size;
 
             return $this;
+        }
+
+        private function setDefaultValues()
+        {
+            $this->setSizeTypes(
+                [
+                    'KB' => 1024,
+                    'MB' => (1024 * 1024),
+                    'GB' => (1024 * 1024 * 1024),
+                    'TB' => (1024 * 1024 * 1024 * 1024),
+                ]
+            );
         }
     }
