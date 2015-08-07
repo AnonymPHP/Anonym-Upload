@@ -6,12 +6,6 @@
   "homepage": "https://gemframework.com",
   "description": "AnonymFramework, New Professional PHP Framework Upload Library",
   "license": "MIT",
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git://github.com/AnonymPHP/Anonym-Upload.git"
-    }
-  ],
   "minimum-stability": "stable",
   "authors": [
     {
